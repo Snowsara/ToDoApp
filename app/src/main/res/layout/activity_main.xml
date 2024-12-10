@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,26 +13,32 @@
         android:layout_marginBottom="20dp"
         android:text="Lista de tarefa"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/titleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titulo da Tarefa" />
+        android:autofillHints=""
+        android:hint="Titulo da Tarefa"
+        android:inputType="TODO"
+        tools:ignore="HardcodedText,TextFields" />
 
     <EditText
         android:id="@+id/descriptionInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        android:hint="Descrição da Tarefa" />
+        android:hint="Descrição da Tarefa"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="243dp"
         android:layout_height="wrap_content"
-        android:text="Adicionar Tarefa" />
+        android:text="Adicionar Tarefa"
+        tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -1,5 +1,6 @@
 package com.example.todo;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,25 +12,28 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
-    private List<Task> taskList;
-    private Context context;
+    private final List<Task> taskList;
+    private final Context context;
 
     public TaskAdapter(List<Task> taskList, Context context) {
         this.taskList = taskList;
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.task_item, parent, false);
         return new TaskViewHolder(itemView);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         Task task = taskList.get(position);

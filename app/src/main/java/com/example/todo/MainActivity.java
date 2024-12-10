@@ -1,5 +1,6 @@
 package com.example.todo;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,13 +25,14 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Task> taskList;
     private TaskAdapter taskAdapter;
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
     private EditText titleInput, descriptionInput;
-    private Button addButton;
+    Button addButton;
 
     private static final String NOME_PREFS = "preferencias_tarefas";
     private static final String CHAVE_LISTA_TAREFAS = "chave_lista_tarefas";
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             if (title.isEmpty() || description.isEmpty()) {
                 Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                String dataAtual = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+                @SuppressLint("SimpleDateFormat") String dataAtual = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
                 Task task = new Task(title, description, false, dataAtual);
 
                 taskList.add(task);
@@ -92,20 +94,20 @@ public class MainActivity extends AppCompatActivity {
         }.getType();
 
         // Converte o JSON para a lista de tarefas
-        ArrayList<Task> listaTarefas = gson.fromJson(json, type);
+        ArrayList<Task> taskList = gson.fromJson(json, type);
 
         // Se a lista estiver vazia (não há tarefas no SharedPreferences), inicializa a lista
-        if (listaTarefas == null) {
-            listaTarefas = new ArrayList<>();
+        if (taskList == null) {
+            taskList = new ArrayList<>();
         }
 
         // Atualiza o status de "concluída" de cada tarefa
-        for (int i = 0; i < listaTarefas.size(); i++) {
+        for (int i = 0; i < taskList.size(); i++) {
             boolean isCompleted = sharedpreferences.getBoolean("Tarefa_" + i + "_Completada", false);
-            listaTarefas.get(i).setCompleted(isCompleted);
+            taskList.get(i).setCompleted(isCompleted);
         }
 
-        return listaTarefas; // Retorna a lista carregada
+        return taskList; // Retorna a lista carregada
     }
 
 }

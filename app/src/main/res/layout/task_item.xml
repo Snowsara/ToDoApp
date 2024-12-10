@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -11,7 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Título da Tarefa" />
+        android:text="Título da Tarefa"
+        tools:ignore="HardcodedText" />
 
     <!-- CheckBox para marcar como concluída -->
 
@@ -25,5 +27,6 @@
         android:id="@+id/buttonDeleteTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Excluir" />
+        android:text="Excluir"
+        tools:ignore="HardcodedText" />
 </LinearLayout>
