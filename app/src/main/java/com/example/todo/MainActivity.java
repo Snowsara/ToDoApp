@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
                 @SuppressLint("SimpleDateFormat") String dataAtual = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-                Task task = new Task(title, description, false, dataAtual);
+                Task task = new Task(title, false);
 
                 taskList.add(task);
                 taskAdapter.notifyDataSetChanged();
