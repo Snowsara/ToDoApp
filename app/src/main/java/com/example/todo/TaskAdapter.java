@@ -54,18 +54,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             notifyDataSetChanged();
         });
 
-        // Excluir tarefa
-        holder.deleteButton.setOnClickListener(v -> {
-            new AlertDialog.Builder(context)
-                    .setMessage("Tem certeza que deseja excluir esta tarefa?")
-                    .setPositiveButton("Sim", (dialog, which) -> {
-                        taskList.remove(position);
-                        notifyItemRemoved(position);
-                        Toast.makeText(context, "Tarefa excluída", Toast.LENGTH_SHORT).show();
-                    })
-                    .setNegativeButton("Não", null)
-                    .show();
-        });
+        //Excluir tarefa
+        holder.deleteButton.setOnClickListener(v ->
+                new AlertDialog.Builder(context)
+                        .setMessage("Tem certeza que deseja excluir esta tarefa?")
+                        .setPositiveButton("Sim", (dialog, which) -> {
+                            taskList.remove(position);
+                            notifyItemRemoved(position);
+                            Toast.makeText(context, "Tarefa excluída", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton("Não", null)
+                        .show()
+        );
+
     }
 
     @Override
