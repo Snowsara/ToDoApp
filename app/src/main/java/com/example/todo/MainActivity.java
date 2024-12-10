@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String NOME_PREFS = "preferencias_tarefas";
     private static final String CHAVE_LISTA_TAREFAS = "chave_lista_tarefas";
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint({"NotifyDataSetChanged", "SimpleDateFormat"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             if (title.isEmpty() || description.isEmpty()) {
                 Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                @SuppressLint("SimpleDateFormat") String dataAtual = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+                new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
                 Task task = new Task(title, false);
 
                 taskList.add(task);
